@@ -21,7 +21,7 @@
       </ul>
     </div>
   </nav>
-  <div class="content"></div>
+  <div id="content"></div>
   <script type="text/javascript">
 
     var baseUrl = $(location).attr('href').replace('index.html', '');
@@ -32,7 +32,6 @@
           method: 'get',
           url:relativeUrl
         }).done(function(results) {
-        debugger;
           $('#content').empty().append(results);
         })
     }
