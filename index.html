@@ -11,12 +11,13 @@
 <body>
   <div class="jumbotron text-center">
     <h1>Lee Gurley</h1>
-    <p>Software Developer - pasUNITY®</p>
+    <p>Software Developer - pasUNITY® - 2015-Current</p>
   </div>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#" id="homePage" class="tabButton" data-url="pages/home.html">Home</a></li>
+        <li><a href="#" class="tabButton" data-url="pages/images.html">Pictures</a></li>
         <li><a href="#" class="tabButton" data-url="pages/about.html">About Me</a></li>
       </ul>
     </div>
@@ -26,27 +27,27 @@
 
     var baseUrl = $(location).attr('href').replace('index.html', '');
 
-    function loadContent(relativeUrl){
+    function loadContent(button){
+      var $button = $(button);
         $.ajax({
           crossDomain: true,
           method: 'get',
-          url:relativeUrl
+          url:$button.data('url')
         }).done(function(results) {
           $('#content').empty().append(results);
+          var $list = $button.parent('li');
+          $list.siblings('li').removeClass('active');
+          $list.addClass('active');
         })
     }
 
     $(document).ready(function (){
-
       $('.tabButton').on('click', function(event) {
         event.preventDefault();
-        loadContent($(this).data('url'));
+        loadContent(this);        
       })
-
       $('#homePage').click();
-
     })
-
   </script>
 </body>
 </html>
