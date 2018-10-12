@@ -15,12 +15,12 @@ p {
     height: 120px;
 }
 
-.ImageContainer img {
-    width: 90%;
-    height: 90%;
-    padding-right: 15px;
-    padding-bottom: 15px;
-}
+    .ImageContainer img {
+        width: 90%;
+        height: 90%;
+        padding-right: 15px;
+        padding-bottom: 15px;
+    }
 
 .Sarcasm {
     font-weight: bold;

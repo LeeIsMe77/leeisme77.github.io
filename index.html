@@ -1,53 +1,53 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="en">
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link type="text/css" rel="stylesheet" href="css/site.css" />
-	<title>Lee Gurley: GitHub</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/site.css" />
+    <title>Lee Gurley: GitHub</title>
 </head>
 <body>
-  <div class="jumbotron text-center">
-    <h1>Lee Gurley</h1>
-    <p>Software Developer - pasUNITY® - 2015-Current</p>
-  </div>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#" id="homePage" class="tabButton" data-url="pages/home.html">Home</a></li>
-        <li><a href="#" class="tabButton" data-url="pages/images.html">Pictures</a></li>
-        <li><a href="#" class="tabButton" data-url="pages/about.html">About Me</a></li>
-      </ul>
+    <div class="jumbotron text-center">
+        <h1>Lee Gurley</h1>
+        <p>Software Developer - pasUNITY® - 2015-Current</p>
     </div>
-  </nav>
-  <div id="content"></div>
-  <script type="text/javascript">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#" id="homePage" class="tabButton" data-url="pages/home.html">Home</a></li>
+                <li><a href="#" class="tabButton" data-url="pages/images.html">Pictures</a></li>
+                <li><a href="#" class="tabButton" data-url="pages/about.html">About Me</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="content"></div>
+    <script type="text/javascript">
 
-    var baseUrl = $(location).attr('href').replace('index.html', '');
+        var baseUrl = $(location).attr('href').replace('index.html', '');
 
-    function loadContent(button){
-      var $button = $(button);
-        $.ajax({
-          crossDomain: true,
-          method: 'get',
-          url:$button.data('url')
-        }).done(function(results) {
-          $('#content').empty().append(results);
-          var $list = $button.parent('li');
-          $list.siblings('li').removeClass('active');
-          $list.addClass('active');
+        function loadContent(button) {
+            var $button = $(button);
+            $.ajax({
+                crossDomain: true,
+                method: 'get',
+                url: $button.data('url')
+            }).done(function (results) {
+                $('#content').empty().append(results);
+                var $list = $button.parent('li');
+                $list.siblings('li').removeClass('active');
+                $list.addClass('active');
+            })
+        }
+
+        $(document).ready(function () {
+            $('.tabButton').on('click', function (event) {
+                event.preventDefault();
+                loadContent(this);
+            })
+            $('#homePage').click();
         })
-    }
-
-    $(document).ready(function (){
-      $('.tabButton').on('click', function(event) {
-        event.preventDefault();
-        loadContent(this);        
-      })
-      $('#homePage').click();
-    })
-  </script>
+    </script>
 </body>
 </html>
